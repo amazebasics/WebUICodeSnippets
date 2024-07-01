@@ -50,5 +50,38 @@
                 text-align: center;
             }
         </style>
+
+<!--PHP code snippets-->
+  <!--message upload snippet-->
+    <?php
+    // Left blank to be filled in
+$servername = "------";
+$username = "-----";
+$password = "-----";
+$dbname = "-----";
+$port = -----;
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $text = $_POST["text"];
+
+    $sql = "INSERT INTO message (text) VALUES ('$text')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "New message created! Click the link below to view it!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+}
+?>
 </body>
 </html>
