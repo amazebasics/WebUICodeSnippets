@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO message (text) VALUES ('$text')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New message created! Click the link below to view it!";
+        echo "New message created!";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
